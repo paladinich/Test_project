@@ -1,0 +1,20 @@
+## Cloudinit usage to install python web-server on machine
+users:
+  - default
+  - name: terraform
+    gecos: terraform
+    primary_group: hashicorp
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    groups: users, admin
+    ssh_import_id:
+    lock_passwd: false
+    ssh_authorized_keys:
+        ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDaKhr7COu2irIFh9idoyeG56bRTdeKlYt5iDTcf5kSM3njWNhgHK5A6PMjMI7WzBiwOAyf4s+F3ogrGEf0TjMb0IqE9QTqasowJRKr6pf5Ep2ZktOilWAcjbzSg5tDRZCISppQqh4zW4q1DV82QW7A4duQir40+qmySdrhyoUbmXWJL0f6dXnwMBvYagErP8Es5JSWDybGzRemHQmmuzvGQg1ptZCYfD7jbApJ1QyNj+LMNib06dkHaPsF2kSNyrb+sOcek5Vh2iYpYOdVRrpPK5olCn3mM7E/g/9VM8knuYd3XLa5WrZYhab85/dsObF8/MZ362CUlhaJiKc6Wc2Dh6BySLfHBCHbDTTzJuM82lN0BeL1vQ9yIACX2jr3EZd6l1pR9Pb8QrZZMg1vsZsIN42Ch+VUQE4n0+ooCkfTpX/6xODX3zctMQnJyfAvJP7HHV0VQdRlEWTyrJ5zAOHNPBrUAVO4pbATUn4SwAvEzq9QrRAdRrJs0r7YUkHbfqc= me@vladimirskovalenko.com
+      -  # Paste your created SSH key here
+    runcmd: sudo apt-get update
+    runcmd: sudo apt-get install apache2
+    runcmd: sudo apt-get install libapache2-mod-wsgi
+    runcmd: sudo apt-get install python-pip
+    runcmd: sudo pip install flask
+
+##...
