@@ -50,6 +50,7 @@ resource "aws_instance" "web-server-py" {
       vpc_security_group_ids = ["aws_vpc.acc-proj.id"]
       private_dns = "db-server"
       monitoring = true
+      private_ip = "10.10.10.5/24"
       tags = {
         Project = "Acc-Project"
         Name = "DBServer"
